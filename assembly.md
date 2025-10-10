@@ -32,14 +32,27 @@ _Example of snubber; schematic of snubber with diode_
 
 ## Mount assembly and integration into printer
 Purger is designed to be compatible with ArmoredTurtle brush mount and regarding its assembly, you should refer to AT's wonderful manual located [**here**](https://www.armoredturtle.xyz/manual.html?manual=at_brush&step=1)  
-Keep in mind, if you have a Voron Trident or comparable printer, you will need to use modified parts provided in this repo, to shorten the horizontal reach of AT mount by 10 mm.  
+Alternatively you can use Klicky style mount, which lacks ease of operation of the AT brush mount, but can be easier to adapt for certain printers.  
   
-Once you have your AT mount assembled, mount it to your printer to desired location and attach the Goose Belt Purger to it. If your printer is properly tuned, GBP should mate with AT mount firmly, without any residual movement, but also without need for excesive force to mate them. If they are too hard to assemble, you can gently sand the sides of dovetail wedges on frame. If they are too loose, you can shim the purger with a piece of paper or thin plastic placed in between purger's frame and AT mount.  
-Once everything is in place, you can adjust it to right position using screws in AT mount. Horizontal adjustement screw gets exposed when you remove M3x16 SHCS screw and lift the arm up. Don't forget to put this screw back once you are done.  
-You should adjust the Z position in such a way, that there is a tiny gap between nozzle and wristband. You can use the M3x20 SHCS screw for fine adjustement.  
-In case you choose HSI arm variant, you should secure your screw with threadlocker or any other mean. If you don't, your screw will eventually fall out due to vibrations.
+Purger itself is connected to its mount via a dovetail connection. If your printer is properly tuned, GBP should mate with the mount firmly, without any residual movement, but also without the need for excessive force to mate them. If they are too hard to assemble, you can gently sand the sides of the dovetail wedges on the frame. If they are too loose, you can shim the purger with a piece of paper or thin plastic placed between the purger's frame and the AT mount.    
   
-If you decide to use Klicky style mount or other kind of mount, assemble and tune it in simillar manner.  
+Once everything is in place, you can adjust the purger to the right position using screws in the AT mount. If you use the basic (not offset) mount, the horizontal adjustment screw gets exposed when you remove the vertical adjustment screw and lift the arm up. Don't forget to put this screw back once you are done.  
+You should adjust the Z position so that that there is a tiny gap between the nozzle and the wristband. You can use the M3x20 SHCS screw for fine adjustment.  
+In case you choose the HSI arm variant, you should secure your screw with threadlocker or any other means. If you don't, your screw will eventually fall out due to vibrations.
+
+For instructions on how to use the mounts for the most popular printers, see below
+  
+### Voron Trident
+For the Voron Trident you can use either a basic mount (without brush), or an offset version with a brush. The offset version is recommended, because it shifts most of the purger away from the bed, preventing collisions with any other mods you might have. If you decide to use a basic mount, keep in mind you have to use customized parts designed for GBP, which are 10 mm shorter than the stock AT brush mount parts.  
+You can place your mount and purger anywhere you want as long as you don't have a collision with your bed. The intended position is as far to the left (or to the right for the mirrored version) as possible.
+
+![](/Assets/Trident/IMG20250901094611.jpg)
+  
+### Voron 2
+For the Voron 2 you have to use a specifically designed offset mount, which clears the purger from colliding with the bed profiles. You are supposed to place the mount directly above the bed profile, so that the purger is on the left side of the printer (or right for the mirrored version) and the brush is in the center. In the case of the 250 mm frame size this will put the purger's end very close to the printer side panel, so you can consider using the "lite" version of the deflector, since the pellet guiding cover is effectively not needed.  
+If you plan to use a waste bucket, make sure to mount it in your printer at this phase, to ensure you have enough clearance. 
+
+![](/Assets/V2.4/image%20(5).jpg)
 
 ## Troubleshooting and FAQ
 - My wristband shifts partially/fully off the pulleys towards bed - this is most likely due to bad tolerance of a bearings holding the idler and/or missing M3x16 SHCS screw. Some cheaper bearings allow the idler or arm to be pulled to the side by a band tension, which causes this shifting off. If you can, use a better bearing. Otherwise try using **GBP_Idler(+3,0)**  
