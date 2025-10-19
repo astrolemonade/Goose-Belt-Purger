@@ -50,7 +50,8 @@ All other settings can be enabled/disabled per your preference.
 Of note, if you have wipe enabled, the wipe routine will be called twice. This is due to the default AFC order of operation that wipes both before and after the kick routine. Since we have disabled the kick routine, it performs the wipe twice in a row. It is recommended to disable the wipe option in `AFC.cfg`, and instead call the brush routine within the `goose_purge` macro by modifying the user_end_script variable: `variable_user_end_script: 'AFC_BRUSH'`.
 
 GBP is compatible with the default AFC method of passing the variable purge length from the slicer to the print via gcode. To configue this, follow this guide:  
-https://www.armoredturtle.xyz/docs/afc-klipper-add-on/features.html?h=variable+purge#variable-purge-length-on-filament-change. 
+https://www.armoredturtle.xyz/docs/afc-klipper-add-on/features.html?h=variable+purge#variable-purge-length-on-filament-change.  
+Be aware, that the GBP macro does not access the AFC variables and as such ignores the AFC's variable `variable_purge_lenght`. Instead you should configure GBP's own variable `variable_default_purge_volume`. This value gets used only when no purge parameters are provided, such as during initial load. 
 
 ## Happy Hare integration
 Happy Hare takes rather complex approach to purging. Unlike other methods it does not rely on slicer to pass purge volume or length together with toolchange. Instead it works with internal purge volume matrix and further enhances it by adding volume of residual filament and cut tip fragment. It can get its purge volume matrix either from internal toolmap or from processing gcode metadata. Either way, for purging to work you need to make sure, that your instance of Happy Hare processes this data correctly. For more information, please visit Happy Hare documentation here:  
