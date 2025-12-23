@@ -6,4 +6,7 @@ Would you like to have your mod here? Contact me on Discord (username graylag) o
 
 ##List of the user mods
 
-Dragi2k's alternative V2.4 mount - by Dragi2k
+Dragi2k/Alternative V2.4 mount  
+
+Sakitume/MotorPulley - Modified pulley model for use of a BHCS instead of a set screw  
+Sakitume/TPU_Belt  
