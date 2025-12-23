@@ -1,5 +1,5 @@
 # Configuration file and macro configuration
-Applies to configuration file v0.7.1 or newer. If you have any kind of issues, check first, if you are on newest available version.
+Applies to configuration file v0.7.3 or newer. If you have any kind of issues, check first, if you are on newest available version.
 
 ## Instalation of macro into Klipper
 Copy the `goose_belt.cfg` file into Klipper configuration file and add `[include goose_belt.cfg]` into your `printer.cfg`. No additional steps are needed
@@ -14,6 +14,13 @@ Once set up, the purge routine can be triggered by running the G-code macro:
 where ### is the purge volume in mm³ or length in mm. If both are provided, PURGE_LENGTH takes precedence. If neither is provided, the macro runs according default value variable configured within the macro.
 
 Below are the most common "chokepoints" for the new users:  
+### Output pin definition
+This part is usually straight forward and the only difficulty may come from identifying correct MCU pin. For this you need to consult your board documenatation.  
+  
+There is hovewer a catch - although any fan output can be used, or in fact any output pin, not all pins are capable of a HW PWM and this may apply even to pins which should be HW PWM capable from chip design. 
+This is not a bug, but comes from the way Klipper is configured. If you run into situation, that everything is connected and configured correctly but the motor still does not activates, consider changing the output which you are using.  
+If for whatever reason you cannot use any other port, you may fall back to using the SW generated PWM, but be aware of the performance penalty this can mean.   
+One example of the pin which should work but does not is the PA8 on a STM32F446.
 
 ### Staging and purging positions
 At first you should think about your purging position. In general you have two options - either purge directly on top of your idler pulley, or to purge on a free belt span (in between pulleys). If you are in doubt, start with purging position above the idler belt, as the pressure from the idler creates more stable conditions and it maximises the cooling time for the deposited material.  
@@ -73,7 +80,7 @@ Be aware, that the GBP macro does not access the AFC variables and as such ignor
 Happy Hare takes rather complex approach to purging. Unlike other methods it does not rely on slicer to pass purge volume or length together with toolchange. Instead it works with internal purge volume matrix and further enhances it by adding volume of residual filament and cut tip fragment. It can get its purge volume matrix either from internal toolmap or from processing gcode metadata. Either way, for purging to work you need to make sure, that your instance of Happy Hare processes this data correctly. For more information, please visit Happy Hare documentation here:  
 https://github.com/moggieuk/Happy-Hare/wiki/Tip-Forming-and-Purging
 
-Also please note, that even if your Happy Hare is configured correctly, it relies on slicer to pass the purging matrix correctly. While this assumption seems to be met for Prusa Slicer, it does not seem so for Orca Slicer. If you use Orca Slicer, consider generating purge volume matrix from toolmap, using custom purge volume matrix or operating GBP in standalone mode.  
+Also please note, that even if your Happy Hare is configured correctly, it relies on slicer to pass the purging matrix correctly.  
 
 As for actual integration, this is very straightforward and the only thing you need to do is edit `mmu_macro_vars.cfg` by setting variable `variable_user_post_load_extension : '_GOOSE_PURGE_HH'` without any parameters.   
   
